@@ -1,23 +1,67 @@
 <div class="authorization">
 
   <div class="authorization__form">
+
     <div class="form">
       <div class="form__header">
-        <img src="assets/images/logo.png" alt="Название логотипа">
+        <a href="#" class="logo"><img src="assets/images/logo.png" alt="Название логотипа"></a>
       </div>
       <div class="form__content">
-       <div class="content">
-         <div class="content__title"><h3>Войти в личный кабинет</h3></div>
-         <div class="tip-info tip-info_succes">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный кабинет.</div>
-         <div class="content__form">
 
-           <form class="example-form">
-               <mat-form-field class="example-full-width">
-                 <input matInput placeholder="Favorite food" value="Sushi">
-               </mat-form-field>
-           </form>
-         </div>
-       </div>
+        <div class="content">
+
+          <div class="content__signin js-animateFlip">
+            <div class="content__title"><h3>Войти в личный кабинет</h3></div>
+            <div class="tip-info tip-info_succes">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
+              кабинет.
+            </div>
+            <div class="content__form">
+              <form>
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Favorite food" value="">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Favorite food" value="">
+                </mat-form-field>
+                <div class="display-flex">
+                  <label class="g-checkbox">
+                    <input type="checkbox">
+                    <span class="g-checkbox__title">Remember me</span>
+                  </label>
+                  <a href="#" class="link link_line">Forget Password ?</a>
+                </div>
+                <div class="btn-wrapper">
+                  <a href="#" class="btn btn_purple">Войти</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="content__signout js-animateFlip">
+            <div class="content__title"><h3>Забыли пароль?</h3></div>
+            <div class="tip-info tip-info_succes">Введите Вашу почты для восстановления пароля:
+            </div>
+            <div class="content__form">
+              <form>
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Favorite food" value="">
+                </mat-form-field>
+                <div class="display-flex">
+                  <label class="g-checkbox">
+                    <input type="checkbox">
+                    <span class="g-checkbox__title">Remember me</span>
+                  </label>
+                  <a href="#" class="link link_line">Forget Password ?</a>
+                </div>
+                <div class="btn-wrapper">
+                  <a href="#" class="btn btn_purple">Войти</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="content__signpass js-animateFlip">
+
+          </div>
+        </div>
       </div>
       <div class="form__footer">
         Нет регистрационных данных? <a href="#">Регистрация</a>
