@@ -60,7 +60,8 @@
     flex: 1
     width: calc(100% - 70rem)
     padding: 5rem 10rem 10rem 10rem
-    background-attachment: fixed
+    //background-attachment: fixed
+    background-position: 35% 0
     background-size: cover
     display: flex
     align-items: center
@@ -69,8 +70,20 @@
     flex-wrap: wrap
     color: #fff
     text-align: left
+    position: relative
+    &:after
+      content: ''
+      position: absolute
+      right: 0
+      left: 0
+      bottom: 0
+      top: 0
+      background-color: rgba(69, 0, 117, 0.9)
+
     .welcome-middle
       align-self: center
+      position: relative
+      z-index: 1
       .title
         width: 100%
         font-size: 3.2rem
