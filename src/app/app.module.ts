@@ -10,6 +10,7 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthService} from './_services/auth.service';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import {HttpClientModule} from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

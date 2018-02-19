@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthUser} from '../_entity/auth-user';
+import {AuthService} from '../_services/auth.service';
 
 @Component({
   selector: 'app-authorization',
@@ -11,9 +13,11 @@ export class AuthorizationComponent implements OnInit {
   showSigIn: boolean = true;
   showSigOut: boolean = false;
   showForgotPass: boolean = false;
+  authUser: AuthUser = new AuthUser();
 
 
-  constructor() { }
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -43,4 +47,18 @@ export class AuthorizationComponent implements OnInit {
     this.showForgotPass = true;
   }
 
+
+  // AUTH FUNC
+  login(event) {
+    event.preventDefault();
+
+    console.log(this.authUser.login);
+    console.log(this.authUser.password);
+
+    this.authService.login(this.authUser.login, this.authUser.password)
+        .subscribe(function (user) {
+          console.log(user);
+        });
+
+  }
 }

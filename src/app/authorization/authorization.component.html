@@ -18,12 +18,12 @@
             <div class="content__form">
               <form>
                 <label class="form-group">
-                  <input placeholder="Логин" type="email" value="" class="form-control">
+                  <input [(ngModel)]="authUser.login" placeholder="Логин" type="email" name="login" class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
                 <label class="form-group _last-child">
-                  <input placeholder="Пароль" type="email" value="" class="form-control">
+                  <input  [(ngModel)]="authUser.password" placeholder="Пароль" type="password" name="password" class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
@@ -35,7 +35,7 @@
                   <a href="#" class="link link_line" (click)="showForgotPas($event)">Забыли пароль ?</a>
                 </div>
                 <div class="btn-wrapper">
-                  <a href="#" class="btn btn_purple">Войти</a>
+                  <a href="#" class="btn btn_purple" (click)="login($event)">Войти</a>
                 </div>
               </form>
             </div>
