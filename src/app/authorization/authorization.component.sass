@@ -1,22 +1,93 @@
 .authorization
   display: flex
-  align-items: flex-start
   flex-wrap: wrap
   &__form
-    width: 70rem
+    display: flex
+    align-items: center
+    width: 700px
     padding: 2rem 11rem
+    height: 100vh
     .form
-      padding: 35% 2rem 2rem 2rem
+      padding: 2rem
       &__header
         text-align: center
         margin: 0 auto 4rem auto
+      .content
+        text-align: center
+        &__title
+          text-align: center
+          h3
+            font-size: 1.5rem
+        .tip-info
+          margin-top: 40px
+        &__form
+          margin-top: 4rem
+          .form-group
+            .form-control
+              border-radius: 0
+              border: 0
+              border-bottom: 1px solid #ebedf2
+              padding: 1rem 0
+              margin-top: 0.1rem
+              color: #575962
+              font-family: sans-serif, Arial
+            &._last-child
+              .form-control
+                border-color: transparent
+            &.has-error
+              .form-control
+                color: #f4516c
+          .display-flex
+            align-items: flex-start
+            margin-top: 2rem
+            .g-checkbox
+              margin-right: auto
+      &__footer
+        display: inline-block
+        font-size: 1.1rem
+        font-weight: 400
+        color: #898b96
+        position: absolute
+        bottom: 0
+        background-color: #fff
+        padding: 15px 0 30px
+        .link
+          font-size: 1.1rem
+          font-weight: 400
+
+
   &__welcome
     flex: 1
     width: calc(100% - 70rem)
     padding: 5rem 10rem 10rem 10rem
     background-attachment: fixed
     background-size: cover
+    display: flex
+    align-items: center
+    align-content: center
+    justify-content: center
+    flex-wrap: wrap
+    color: #fff
+    text-align: left
+    .welcome-middle
+      align-self: center
+      .title
+        width: 100%
+        font-size: 3.2rem
+        font-weight: 500
+        margin-bottom: 2rem
+        text-align: left
+      p
+        width: 100%
+        font-size: 1.2rem
+        font-weight: 200
+        text-align: left
+        max-width: 50rem
+      .btn
+        margin-top: 2rem
 
 
+  .content__signpass, .content__signout
+    display: none
 
 

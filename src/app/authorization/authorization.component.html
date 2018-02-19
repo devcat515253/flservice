@@ -12,17 +12,21 @@
 
           <div class="content__signin js-animateFlip">
             <div class="content__title"><h3>Войти в личный кабинет</h3></div>
-            <div class="tip-info tip-info_succes">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
+            <div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
               кабинет.
             </div>
             <div class="content__form">
               <form>
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Favorite food" value="">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Favorite food" value="">
-                </mat-form-field>
+                <label class="form-group">
+                  <input placeholder="Логин" type="email" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
+                <label class="form-group _last-child">
+                  <input placeholder="Пароль" type="email" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
                 <div class="display-flex">
                   <label class="g-checkbox">
                     <input type="checkbox">
@@ -42,9 +46,11 @@
             </div>
             <div class="content__form">
               <form>
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Favorite food" value="">
-                </mat-form-field>
+                <label class="form-group">
+                  <input placeholder="Эл. почта" type="email" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
                 <div class="display-flex">
                   <label class="g-checkbox">
                     <input type="checkbox">
@@ -54,23 +60,66 @@
                 </div>
                 <div class="btn-wrapper">
                   <a href="#" class="btn btn_purple">Войти</a>
+                  <a href="#" class="btn btn_purple btn_purple-border">Войти</a>
                 </div>
               </form>
             </div>
           </div>
-          <div class="content__signpass js-animateFlip">
 
+          <div class="content__signpass js-animateFlip">
+            <div class="content__title"><h3>Регистрация</h3></div>
+            <div class="tip-info tip-info_succes">Введите Вашу почты для восстановления пароля:
+            </div>
+            <div class="content__form">
+              <form>
+                <label class="form-group">
+                  <input placeholder="Имя" type="text" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
+                <label class="form-group">
+                  <input placeholder="Эл. адрес" type="text" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
+                <label class="form-group">
+                  <input placeholder="Пароль" type="text" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
+                <label class="form-group _last-child">
+                  <input placeholder="Повторите пароль" type="text" value="" class="form-control">
+                  <span class="form-alert">Данный логин не найден!</span>
+                </label>
+
+                <div class="display-flex">
+                  <label class="g-checkbox">
+                    <input type="checkbox">
+                    <span class="g-checkbox__title">Я принимаю <a href="#">условия соглашения</a></span>
+                  </label>
+                </div>
+                <div class="btn-wrapper">
+                  <a href="#" class="btn btn_purple">Войти</a>
+                  <a href="#" class="btn btn_purple btn_purple-border">Войти</a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
       <div class="form__footer">
-        Нет регистрационных данных? <a href="#">Регистрация</a>
+        Нет регистрационных данных? <a href="#" class="link link_line">Регистрация</a>
       </div>
     </div>
   </div>
 
   <div class="authorization__welcome" style="background-image:url('assets/images/welcome-bg.jpg');">
-    321
+    <div class="welcome-middle">
+      <h1 class="title">Присоединяйтесь к нашей команде!</h1>
+      <p>Полный учет деятельности для фриланс специалистов всех категорий!
+        Всевозможные графики, таблицы, диаграммы и многое другое ждет тебя!</p>
+      <a href="#" class="btn btn-white">Вводный урок</a>
+    </div>
   </div>
 
 </div>
