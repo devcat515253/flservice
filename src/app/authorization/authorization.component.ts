@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizationComponent implements OnInit {
 
-  firstAnimStop: boolean = false;
+  animateApply: boolean = false;
   showSigIn: boolean = true;
   showSigOut: boolean = false;
   showForgotPass: boolean = false;
@@ -28,7 +28,7 @@ export class AuthorizationComponent implements OnInit {
 
   showSignIn(event) {
     event.preventDefault();
-    this.firstAnimStop = true;
+    this.animateApply = true;
 
     this.showSigOut = false;
     this.showSigIn = true;
