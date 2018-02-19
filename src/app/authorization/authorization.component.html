@@ -10,7 +10,7 @@
 
         <div class="content">
 
-          <div *ngIf="showSigIn" class="content__signin js-animateFlip">
+          <div *ngIf="showSigIn" [ngClass]="{animated: showSigIn, flipInX:  showSigIn && firstAnimStop}" class="content__signin js-animateFlip">
             <div class="content__title"><h3>Войти в личный кабинет</h3></div>
             <div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
               кабинет.
@@ -40,7 +40,7 @@
               </form>
             </div>
           </div>
-          <div *ngIf="showSigOut" class="content__signout js-animateFlip">
+          <div *ngIf="showSigOut" [ngClass]="{animated: showSigOut, flipInX:  showSigOut}" class="content__signout js-animateFlip">
             <div class="content__title"><h3>Регистрация</h3></div>
             <div class="tip-info tip-info_succes">Введите Вашу почты для восстановления пароля:
             </div>
@@ -81,7 +81,7 @@
 
           </div>
 
-          <div *ngIf="showForgotPass" class="content__signpass js-animateFlip">
+          <div *ngIf="showForgotPass" [ngClass]="{animated: showForgotPass, flipInX:  showForgotPass}" class="content__signpass js-animateFlip">
 
 
 
