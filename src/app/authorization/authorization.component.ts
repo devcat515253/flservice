@@ -7,9 +7,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizationComponent implements OnInit {
 
+  showSigIn: boolean = true;
+  showSigOut: boolean = false;
+  showForgotPass: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showSignOut(event) {
+    event.preventDefault();
+
+    this.showSigOut = true;
+    this.showSigIn = false;
+    this.showForgotPass = false;
+  }
+
+  showSignIn(event) {
+    event.preventDefault();
+
+    this.showSigOut = false;
+    this.showSigIn = true;
+    this.showForgotPass = false;
+  }
+
+  showForgotPas(event) {
+    event.preventDefault();
+
+    this.showSigOut = false;
+    this.showSigIn = false;
+    this.showForgotPass = true;
   }
 
 }
