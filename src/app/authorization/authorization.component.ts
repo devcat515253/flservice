@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthUser} from '../_entity/auth-user';
 import {AuthService} from '../_services/auth.service';
+import {RegistrUser} from '../_entity/registr-user';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-authorization',
@@ -14,10 +16,11 @@ export class AuthorizationComponent implements OnInit {
   showSigOut: boolean = false;
   showForgotPass: boolean = false;
   authUser: AuthUser = new AuthUser();
+  registrUser: RegistrUser = new RegistrUser();
 
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -59,6 +62,17 @@ export class AuthorizationComponent implements OnInit {
         .subscribe(function (user) {
           console.log(user);
         });
+
+  }
+
+
+  registration(event) {
+    event.preventDefault();
+    console.log(this.registrUser);
+
+    this.userService.registration(this.registrUser).subscribe(function (user) {
+      console.log(user);
+    });
 
   }
 }

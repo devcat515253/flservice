@@ -45,24 +45,25 @@
             <div class="tip-info tip-info_succes">Введите регистрационные данные:
             </div>
             <div class="content__form">
+
               <form>
                 <label class="form-group">
-                  <input placeholder="Имя" type="text" value="" class="form-control">
+                  <input [(ngModel)]="registrUser.login" placeholder="Имя" type="text" name="login" class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
                 <label class="form-group">
-                  <input placeholder="Эл. адрес" type="text" value="" class="form-control">
+                  <input [(ngModel)]="registrUser.email" placeholder="Эл. адрес" type="text" name="email" class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
                 <label class="form-group">
-                  <input placeholder="Пароль" type="text" value="" class="form-control">
+                  <input [(ngModel)]="registrUser.password" placeholder="Пароль" type="password" name="password" class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
                 <label class="form-group _last-child">
-                  <input placeholder="Повторите пароль" type="text" value="" class="form-control">
+                  <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="password" name="repassword"  class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
@@ -73,7 +74,7 @@
                   </label>
                 </div>
                 <div class="btn-wrapper">
-                  <a href="#" class="btn btn_purple">Регистрация</a>
+                  <a href="#" class="btn btn_purple" (click)="registration($event)">Регистрация</a>
                   <a href="#" class="btn btn_purple btn_purple-border" (click)="showSignIn($event)">Отмена</a>
                 </div>
               </form>

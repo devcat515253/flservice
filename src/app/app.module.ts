@@ -11,12 +11,19 @@ import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './_services/auth.service';
+import { UserAccountComponent } from './user/user-account/user-account.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { PortfolioComponent } from './user/portfolio/portfolio.component';
+import {UserService} from './_services/user.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    UserAccountComponent,
+    DashboardComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import {AuthService} from './_services/auth.service';
     HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
