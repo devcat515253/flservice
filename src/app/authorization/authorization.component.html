@@ -53,8 +53,26 @@
                 </label>
 
                 <label class="form-group">
-                  <input [(ngModel)]="registrUser.email" placeholder="Эл. адрес" type="text" name="email" class="form-control">
-                  <span class="form-alert">Данный логин не найден!</span>
+                  <input [(ngModel)]="registrUser.email"  placeholder="Эл. адрес" type="text" name="email" class="form-control" [formControl]="emailFormControl" (blur)="onBlurEmail()">
+                  <!--<span class="form-alert">Данный логин не найден!</span>-->
+                  <span *ngIf="emailMsgError" class="form-alert">{{emailMsgError}}</span>
+
+
+                  <!--<div *ngIf="emailMsgError">-->
+                    <!--{{emailMsgError}}-->
+                  <!--</div>-->
+
+
+                  <!--<div *ngIf="emailFormControl.hasError('email')">-->
+                    <!--Name is required.-->
+                  <!--</div>-->
+                  <!--<div *ngIf="emailFormControl.hasError('minlength')">-->
+                    <!--Name must be at least 4 characters long.-->
+                  <!--</div>-->
+                  <!--<div *ngIf="emailFormControl.hasError('required')">-->
+                    <!--required-->
+                  <!--</div>-->
+
                 </label>
 
                 <label class="form-group">

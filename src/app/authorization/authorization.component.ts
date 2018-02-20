@@ -3,6 +3,7 @@ import {AuthUser} from '../_entity/auth-user';
 import {AuthService} from '../_services/auth.service';
 import {RegistrUser} from '../_entity/registr-user';
 import {UserService} from '../_services/user.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-authorization',
@@ -10,6 +11,11 @@ import {UserService} from '../_services/user.service';
   styleUrls: ['./authorization.component.sass']
 })
 export class AuthorizationComponent implements OnInit {
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+    Validators.minLength(4)
+  ]);
 
   animateApply: boolean = false;
   showSigIn: boolean = true;
@@ -17,6 +23,8 @@ export class AuthorizationComponent implements OnInit {
   showForgotPass: boolean = false;
   authUser: AuthUser = new AuthUser();
   registrUser: RegistrUser = new RegistrUser();
+
+  emailMsgError = '';
 
 
 
@@ -74,5 +82,16 @@ export class AuthorizationComponent implements OnInit {
       console.log(user);
     });
 
+  }
+
+
+  onBlurEmail() {
+
+      if (this.emailFormControl.hasError('email')) {
+        this.emailMsgError = 'введите валидный емаил';
+      } else {
+        this.emailMsgError = '';
+      }
+    console.log( this.emailMsgError);
   }
 }
