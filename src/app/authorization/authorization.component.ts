@@ -18,7 +18,7 @@ export class AuthorizationComponent implements OnInit {
 
   // Проверка на логин
   loginExist: boolean = false;
-  userExist_db_msg: string = 'Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный кабинет.';
+  userExist_db_msg: string = '';
 
   // Подсветка ошибки логниа
   error_msg_login: string = '';
@@ -79,7 +79,6 @@ export class AuthorizationComponent implements OnInit {
           } else {
             this.loginExist = false;
             console.log(this.loginExist);
-            this.userExist_db_msg = 'Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный кабинет.';
           }
         });
 
