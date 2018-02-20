@@ -32,6 +32,7 @@
 body input:focus:required:invalid,
 body textarea:focus:required:invalid
   color: #666
+
 body input:required:valid,
 body textarea:required:valid
   color: #666
@@ -56,6 +57,7 @@ a
   color: #5867dd
   text-decoration: none
   background-color: transparent
+
 a, area, button, [role="button"], input:not([type="range"]), label, select, summary, textarea
   touch-action: manipulation
 
@@ -100,10 +102,17 @@ p
   position: relative
   b
     font-weight: 500
+  p
+    margin: 0
+  .btn-close
+    color: #cfcedb
   &_success
-    background-color: #ffffff
     border-color: #34bfa3
     color: #34bfa3
+    font-weight: 400
+  &_error
+    border-color: #f4516c
+    color: #f4516c
     font-weight: 400
 
 .form-control
@@ -125,8 +134,8 @@ p
       opacity: 1
     &::-webkit-input-placeholder
       color: #716aca
+
 .form-alert
-  display: none
   width: 100%
   text-align: left
   margin-top: 0.2rem
@@ -136,8 +145,6 @@ p
 
 .form-group
   &.has-error
-    .form-alert
-      display: block
     .form-control
       color: #f4516c
       &:-moz-placeholder,
@@ -264,3 +271,4 @@ p
     border-color: #fff
     color: #000
     padding: 1.2rem 3rem
+
