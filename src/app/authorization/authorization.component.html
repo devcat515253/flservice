@@ -12,13 +12,13 @@
 
           <div *ngIf="showSigIn" [ngClass]="{animated: showSigIn, flipInX:  showSigIn && animateApply}" class="content__signin js-animateFlip">
             <div class="content__title"><h3>Войти в личный кабинет</h3></div>
-            <div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
-              кабинет.
+            <div class="tip-info tip-info_success"
+                 [ngClass]="{'tip-info_success': !loginExist, 'tip-info_error':  loginExist}" [innerHtml]="userExist_db_msg">
             </div>
             <div class="content__form">
               <form>
                 <label class="form-group">
-                  <input [(ngModel)]="authUser.login" placeholder="Логин" type="email" name="login" class="form-control">
+                  <input [(ngModel)]="authUser.login"  placeholder="Логин1" type="email" name="login" class="form-control">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
@@ -47,9 +47,9 @@
             <div class="content__form">
 
               <form>
-                <label class="form-group">
-                  <input [(ngModel)]="registrUser.login" placeholder="Имя" type="text" name="login" class="form-control">
-                  <span class="form-alert">Данный логин не найден!</span>
+                <label class="form-group" [class.has-error]="login_has_error">
+                  <input [(ngModel)]="registrUser.login" (blur)="checkLogin()" placeholder="Логин" type="text" name="login" class="form-control">
+                  <span class="form-alert">{{error_msg_login}}</span>
                 </label>
 
                 <label class="form-group">

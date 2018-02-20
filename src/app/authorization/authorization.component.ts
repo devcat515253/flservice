@@ -15,6 +15,14 @@ export class AuthorizationComponent implements OnInit {
   showSigIn: boolean = true;
   showSigOut: boolean = false;
   showForgotPass: boolean = false;
+
+  // Проверка на логин
+  loginExist: boolean = false;
+  userExist_db_msg: string = 'Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный кабинет.';
+
+  // Подсветка ошибки логниа
+  error_msg_login: string = '';
+  login_has_error: boolean = false;
   authUser: AuthUser = new AuthUser();
   registrUser: RegistrUser = new RegistrUser();
 
@@ -55,12 +63,24 @@ export class AuthorizationComponent implements OnInit {
   login(event) {
     event.preventDefault();
 
-    console.log(this.authUser.login);
-    console.log(this.authUser.password);
+    // console.log(this.authUser.login);
+    // console.log(this.authUser.password);
+
 
     this.authService.login(this.authUser.login, this.authUser.password)
-        .subscribe(function (user) {
-          console.log(user);
+        .subscribe( (userResult) => {
+
+          this.loginExist = userResult;
+
+          if  (!this.loginExist) {
+            this.loginExist = true;
+            this.userExist_db_msg = 'Данная учетная запись не найдена!';
+            console.log(this.loginExist);
+          } else {
+            this.loginExist = false;
+            console.log(this.loginExist);
+            this.userExist_db_msg = 'Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный кабинет.';
+          }
         });
 
   }
@@ -70,9 +90,20 @@ export class AuthorizationComponent implements OnInit {
     event.preventDefault();
     console.log(this.registrUser);
 
-    this.userService.registration(this.registrUser).subscribe(function (user) {
+    this.userService.registration(this.registrUser).subscribe( (user) => {
       console.log(user);
     });
+  }
 
+  checkLogin() {
+    this.userService.checkLogin(this.registrUser).subscribe((loginResult) => {
+      this.loginExist = loginResult;
+      if  (!this.loginExist) {
+        this.login_has_error = true;
+        this.error_msg_login = 'Указанный логин занят!';
+      } else {
+        this.login_has_error = false;
+      }
+    });
   }
 }

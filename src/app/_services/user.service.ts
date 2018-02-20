@@ -18,4 +18,9 @@ export class UserService {
   }
 
 
+  checkLogin(newUser: RegistrUser) {
+    return this.http.post<any>(`${this.baseUrl}/api/user/checkLogin`, newUser);
+  }
+
+
 }
