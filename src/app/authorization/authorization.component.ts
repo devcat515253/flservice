@@ -116,16 +116,18 @@ export class AuthorizationComponent implements OnInit {
   checkLogin() {
 
     if (this.registrationForm.controls['login'].hasError('required')) {
-      this.emailMsgError = 'Введите валидный логин';
+      this.error_msg_login = 'Введите валидный логин';
       this.loginMsgError = true;
     } else if (this.registrationForm.controls['login'].hasError('minlength')) {
-      this.emailMsgError = 'Логин должен быть более 4 символов';
+      this.error_msg_login = 'Логин должен быть более 4 символов';
       this.loginMsgError = true;
     } else{
       this.userService.checkLogin(this.registrUser).subscribe((loginResult) => {
         this.loginExist = loginResult;
+        console.log(loginResult);
         if (!this.loginExist) {
           this.login_has_error = true;
+          this.loginMsgError = true;
           this.error_msg_login = 'Указанный логин занят!';
         } else {
           this.login_has_error = false;

@@ -25,6 +25,11 @@
         &__form
           margin-top: 4rem
           .form-group
+            &.has-error
+              .form-control.ng-touched.ng-valid
+                color: #f4516c
+                & + .form-alert
+                  display: block
             .form-control
               border-radius: 0
               border: 0
@@ -33,12 +38,12 @@
               margin-top: 0.1rem
               color: #575962
               font-family: sans-serif, Arial
+              &.ng-touched.ng-valid
+                & + .form-alert
+                  display: none
             &._last-child
               .form-control
                 border-color: transparent
-            &.has-error
-              .form-control
-                color: #f4516c
           .display-flex
             align-items: flex-start
             margin-top: 2rem
