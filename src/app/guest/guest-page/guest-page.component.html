@@ -11,38 +11,41 @@
         <div class="content">
 
           <div *ngIf="showSigIn" [ngClass]="{animated: showSigIn, flipInX:  showSigIn && animateApply}" class="content__signin js-animateFlip">
-            <div class="content__title"><h3>Войти в личный кабинет</h3></div>
-            <div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
-              кабинет.
+            <div class="sign-in-wr">
+              <app-sign-in  (onForgotPas)="showForgotPas($event)" ></app-sign-in>
             </div>
-            <div *ngIf="loginExist" class="tip-info tip-info_error">
-              <p [innerHtml]="userExist_db_msg"></p>
-              <button aria-label="Close" class="close" data-dismiss="alert" type="button"></button>
-            </div>
-            <div class="content__form">
-              <form>
-                <label class="form-group">
-                  <input [(ngModel)]="authUser.login"  placeholder="Логин" type="email" name="login" class="form-control">
-                  <span class="form-alert">Данный логин не найден!</span>
-                </label>
+            <!--<div class="content__title"><h3>Войти в личный кабинет</h3></div>-->
+            <!--<div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный-->
+              <!--кабинет.-->
+            <!--</div>-->
+            <!--<div *ngIf="loginExist" class="tip-info tip-info_error">-->
+              <!--<p [innerHtml]="userExist_db_msg"></p>-->
+              <!--<button aria-label="Close" class="close" data-dismiss="alert" type="button"></button>-->
+            <!--</div>-->
+            <!--<div class="content__form">-->
+              <!--<form>-->
+                <!--<label class="form-group">-->
+                  <!--<input [(ngModel)]="authUser.login"  placeholder="Логин" type="email" name="login" class="form-control">-->
+                  <!--<span class="form-alert">Данный логин не найден!</span>-->
+                <!--</label>-->
 
-                <label class="form-group _last-child">
-                  <input  [(ngModel)]="authUser.password" placeholder="Пароль" type="password" name="password" class="form-control">
-                  <span class="form-alert">Данный логин не найден!</span>
-                </label>
+                <!--<label class="form-group _last-child">-->
+                  <!--<input  [(ngModel)]="authUser.password" placeholder="Пароль" type="password" name="password" class="form-control">-->
+                  <!--<span class="form-alert">Данный логин не найден!</span>-->
+                <!--</label>-->
 
-                <div class="display-flex">
-                  <label class="g-checkbox">
-                    <input type="checkbox">
-                    <span class="g-checkbox__title">Запомнить</span>
-                  </label>
-                  <a href="#" class="link link_line" (click)="showForgotPas($event)">Забыли пароль ?</a>
-                </div>
-                <div class="btn-wrapper">
-                  <a href="#" class="btn btn_purple" (click)="login($event)">Войти</a>
-                </div>
-              </form>
-            </div>
+                <!--<div class="display-flex">-->
+                  <!--<label class="g-checkbox">-->
+                    <!--<input type="checkbox">-->
+                    <!--<span class="g-checkbox__title">Запомнить</span>-->
+                  <!--</label>-->
+                  <!--<a href="#" class="link link_line" (click)="showForgotPas($event)">Забыли пароль ?</a>-->
+                <!--</div>-->
+                <!--<div class="btn-wrapper">-->
+                  <!--<a href="#" class="btn btn_purple" (click)="login($event)">Войти</a>-->
+                <!--</div>-->
+              <!--</form>-->
+            <!--</div>-->
           </div>
           <div *ngIf="showSigOut" [ngClass]="{animated: showSigOut, flipInX:  showSigOut}" class="content__signout js-animateFlip">
             <div class="content__title"><h3>Регистрация</h3></div>

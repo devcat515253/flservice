@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
-import { AuthorizationComponent } from './authorization/authorization.component';
+import {GuestPageComponent} from './guest/guest-page/guest-page.component';
 
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,15 +17,21 @@ import { PortfolioComponent } from './user/portfolio/portfolio.component';
 import {UserService} from './_services/user.service';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignInComponent } from './guest/sign-in/sign-in.component';
+import { SignOutComponent } from './guest/sign-out/sign-out.component';
+import { ForgotPasswordComponent } from './guest/forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorizationComponent,
+    GuestPageComponent,
     UserAccountComponent,
     DashboardComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    SignInComponent,
+    SignOutComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

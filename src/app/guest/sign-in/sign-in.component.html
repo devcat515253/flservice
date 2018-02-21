@@ -1,0 +1,39 @@
+<div class="signin    ">
+  <div class="content__title"><h3>Войти в личный кабинет</h3></div>
+  <div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный
+    кабинет.
+  </div>
+  <div *ngIf="userNotFound"  class="tip-info tip-info_error">
+    <p>Данная учетная запись не найдена</p>
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button"></button>
+  </div>
+  <div class="content__form">
+    <form>
+      <label class="form-group">
+        <input [(ngModel)]="authUser.login"  placeholder="Логин" type="email" name="login" class="form-control">
+        <span class="form-alert">Данный логин не найден!</span>
+      </label>
+
+      <label class="form-group _last-child">
+        <input  [(ngModel)]="authUser.password" placeholder="Пароль" type="password" name="password" class="form-control">
+        <span class="form-alert">Данный логин не найден!</span>
+      </label>
+
+      <div class="display-flex">
+        <label class="g-checkbox">
+          <input type="checkbox">
+          <span class="g-checkbox__title">Запомнить</span>
+        </label>
+        <a href="#" class="link link_line" (click)="showForgotPas($event)">Забыли пароль ?</a>
+        <!--<button [disabled]="loading" type="submit" class="link link_line" (click)="showForgotPas($event)">Забыли пароль ?</button>-->
+
+      </div>
+      <div class="btn-wrapper">
+        <!--<a href="#" class="btn btn_purple" (click)="login($event)">Войти</a>-->
+
+        <button [disabled]="loading" type="submit" class="btn btn_purple" (click)="login($event)">Войти</button>
+
+      </div>
+    </form>
+  </div>
+</div>

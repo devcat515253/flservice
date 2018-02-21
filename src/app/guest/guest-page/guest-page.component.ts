@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthUser} from '../_entity/auth-user';
-import {AuthService} from '../_services/auth.service';
-import {RegistrUser} from '../_entity/registr-user';
-import {UserService} from '../_services/user.service';
+import {AuthUser} from '../../_entity/auth-user';
+import {AuthService} from '../../_services/auth.service';
+import {RegistrUser} from '../../_entity/registr-user';
+import {UserService} from '../../_services/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-authorization',
-  templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.sass']
+  selector: 'app-guest-page',
+  templateUrl: './guest-page.component.html',
+  styleUrls: ['./guest-page.component.sass']
 })
-export class AuthorizationComponent implements OnInit {
+export class GuestPageComponent implements OnInit {
 
 
   animateApply: boolean = false;
@@ -25,7 +25,7 @@ export class AuthorizationComponent implements OnInit {
   // Подсветка ошибки логниа
   error_msg_login: string = '';
   login_has_error: boolean = false;
-  authUser: AuthUser = new AuthUser();
+  // authUser: AuthUser = new AuthUser();
   registrUser: RegistrUser = new RegistrUser();
 
   emailMsgError = '';
@@ -69,8 +69,8 @@ export class AuthorizationComponent implements OnInit {
     this.showForgotPass = false;
   }
 
-  showForgotPas(event) {
-    event.preventDefault();
+  showForgotPas() {
+    // event.preventDefault();
 
     this.showSigOut = false;
     this.showSigIn = false;
@@ -78,30 +78,30 @@ export class AuthorizationComponent implements OnInit {
   }
 
 
-  // AUTH FUNC
-  login(event) {
-    event.preventDefault();
-
-    // console.log(this.authUser.login);
-    // console.log(this.authUser.password);
-
-
-    this.authService.login(this.authUser.login, this.authUser.password)
-        .subscribe( (userResult) => {
-
-          this.loginExist = userResult;
-
-          if  (!this.loginExist) {
-            this.loginExist = true;
-            this.userExist_db_msg = 'Данная учетная запись не найдена!';
-            console.log(this.loginExist);
-          } else {
-            this.loginExist = false;
-            console.log(this.loginExist);
-          }
-        });
-
-  }
+  // // AUTH FUNC
+  // login(event) {
+  //   event.preventDefault();
+  //
+  //   // console.log(this.authUser.login);
+  //   // console.log(this.authUser.password);
+  //
+  //
+  //   this.authService.login(this.authUser.login, this.authUser.password)
+  //       .subscribe( (userResult) => {
+  //
+  //         this.loginExist = userResult;
+  //
+  //         if  (!this.loginExist) {
+  //           this.loginExist = true;
+  //           this.userExist_db_msg = 'Данная учетная запись не найдена!';
+  //           console.log(this.loginExist);
+  //         } else {
+  //           this.loginExist = false;
+  //           console.log(this.loginExist);
+  //         }
+  //       });
+  //
+  // }
 
 
   registration(event) {
