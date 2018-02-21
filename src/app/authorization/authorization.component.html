@@ -50,14 +50,16 @@
             </div>
             <div class="content__form">
 
-              <form>
+              <form [formGroup]="registrationForm" >
                 <label class="form-group" [class.has-error]="login_has_error">
-                  <input [(ngModel)]="registrUser.login" (blur)="checkLogin()" placeholder="Логин" type="text" name="login" class="form-control">
+                  <input [(ngModel)]="registrUser.login" (blur)="checkLogin()" placeholder="Логин" type="text" name="login" class="form-control" formControlName="">
                   <span class="form-alert">{{error_msg_login}}</span>
                 </label>
 
-                <label class="form-group">
-                  <input [(ngModel)]="registrUser.email"  placeholder="Эл. адрес" type="text" name="email" class="form-control" [formControl]="emailFormControl" (blur)="onBlurEmail()">
+                <!--<label class="form-group" [class.has-error]="emailFormControl.invalid && emailFormControl.touched">-->
+                  <!--<input [(ngModel)]="registrUser.email"  placeholder="Эл. адрес" type="text" name="email" class="form-control" [formControl]="emailFormControl" (blur)="onBlurEmail()">-->
+                <label class="form-group" [class.has-error]="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">
+                  <input  [(ngModel)]="registrUser.email"   placeholder="Эл. адрес" type="text" name="email" class="form-control" formControlName="email"  (blur)="onBlurEmail()" >
                   <!--<span class="form-alert">Данный логин не найден!</span>-->
                   <span *ngIf="emailMsgError" class="form-alert">{{emailMsgError}}</span>
 
@@ -67,25 +69,26 @@
                   <!--</div>-->
 
 
-                  <!--<div *ngIf="emailFormControl.hasError('email')">-->
-                    <!--Name is required.-->
+                  <!--<div *ngIf="emailFormControl.hasError('email')  && emailFormControl.touched">-->
+                    <!--email incorect-->
                   <!--</div>-->
-                  <!--<div *ngIf="emailFormControl.hasError('minlength')">-->
-                    <!--Name must be at least 4 characters long.-->
+                  <!--<div *ngIf="emailFormControl.hasError('minlength') && emailFormControl.touched">-->
+                    <!--email must be at least 4 characters long.-->
                   <!--</div>-->
-                  <!--<div *ngIf="emailFormControl.hasError('required')">-->
+                  <!--<div *ngIf="emailFormControl.hasError('required') && emailFormControl.touched">-->
                     <!--required-->
                   <!--</div>-->
+
 
                 </label>
 
                 <label class="form-group">
-                  <input [(ngModel)]="registrUser.password" placeholder="Пароль" type="password" name="password" class="form-control">
+                  <input [(ngModel)]="registrUser.password" placeholder="Пароль" type="password" name="password" class="form-control" formControlName="">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 
                 <label class="form-group _last-child">
-                  <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="password" name="repassword"  class="form-control">
+                  <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="password" name="repassword"  class="form-control" formControlName="">
                   <span class="form-alert">Данный логин не найден!</span>
                 </label>
 

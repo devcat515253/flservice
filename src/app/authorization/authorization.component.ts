@@ -3,7 +3,7 @@ import {AuthUser} from '../_entity/auth-user';
 import {AuthService} from '../_services/auth.service';
 import {RegistrUser} from '../_entity/registr-user';
 import {UserService} from '../_services/user.service';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-authorization',
@@ -11,11 +11,7 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./authorization.component.sass']
 })
 export class AuthorizationComponent implements OnInit {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-    Validators.minLength(4)
-  ]);
+
 
   animateApply: boolean = false;
   showSigIn: boolean = true;
@@ -35,6 +31,22 @@ export class AuthorizationComponent implements OnInit {
   emailMsgError = '';
 
 
+  // emailFormControl: FormControl = new FormControl(this.registrUser.email, [
+  //     Validators.required,
+  //     Validators.email,
+  //     Validators.minLength(4)
+  //   ]);
+
+  registrationForm: FormGroup = new FormGroup({
+    '': new FormControl(null),
+
+    email: new FormControl( this.registrUser.email, [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(4)
+    ])
+
+  });
 
   constructor(private authService: AuthService, private userService: UserService) { }
 
@@ -117,11 +129,32 @@ export class AuthorizationComponent implements OnInit {
 
   onBlurEmail() {
 
-      if (this.emailFormControl.hasError('email')) {
-        this.emailMsgError = 'введите валидный емаил';
-      } else {
+    let err = false;
+
+    // if (this.emailFormControl.hasError('email') || this.emailFormControl.hasError('required')) {
+    //   this.emailMsgError = 'Введите валидный емаил';
+    //   err = true;
+    // }
+    //
+    // if (this.emailFormControl.hasError('minlength')) {
+    //   this.emailMsgError = 'Email должен быть более 4 символов';
+    //   err = true;
+    // }
+
+    if (this.registrationForm.controls['email'].hasError('email') || this.registrationForm.controls['email'].hasError('required')) {
+      this.emailMsgError = 'Введите валидный емаил';
+      err = true;
+    }
+
+    if (this.registrationForm.controls['email'].hasError('minlength')) {
+      this.emailMsgError = 'Email должен быть более 4 символов';
+      err = true;
+    }
+
+
+
+      if (!err) {
         this.emailMsgError = '';
       }
-    console.log( this.emailMsgError);
   }
 }
