@@ -19,7 +19,7 @@ export class AuthService {
       login: username,
       password: password
     };
-    return this.http.post<any>(`${this.baseUrl}/api/auth/checkLogin`, body)
+    return this.http.post<any>(`${this.baseUrl}/api/auth/checkAuth`, body)
       .map(user => {
         // console.log(user);
         // login successful if there's a jwt token in the response
