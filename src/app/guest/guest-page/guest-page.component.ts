@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthUser} from '../../_entity/auth-user';
 import {AuthService} from '../../_services/auth.service';
 import {RegistrUser} from '../../_entity/registr-user';
@@ -8,7 +8,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-guest-page',
   templateUrl: './guest-page.component.html',
-  styleUrls: ['./guest-page.component.sass']
+  styleUrls: ['./guest-page.component.sass'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GuestPageComponent implements OnInit {
 
