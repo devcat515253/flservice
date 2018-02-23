@@ -1,3 +1,46 @@
-<p>
-  sign-out works!
-</p>
+<div class="sign-out">
+  <div class="content__title"><h3>Регистрация</h3></div>
+  <p class="content__info">Введите регистрационные данные:</p>
+  <div class="content__form">
+
+    <form [formGroup]="registrationForm" (submit)="registration($event)" novalidate>
+      <label class="form-group">
+        <input [(ngModel)]="registrUser.login" (blur)="checkLogin()" placeholder="Логин" type="text" name="login"
+               class="form-control" formControlName="login">
+        <span *ngIf="loginMsgError" class="form-alert">{{error_msg_login}}</span>
+      </label>
+
+      <label class="form-group">
+        <input [(ngModel)]="registrUser.email" placeholder="Эл. адрес" type="text" name="email" class="form-control"
+               formControlName="email">
+        <span *ngIf="emailMsgError" class="form-alert">{{emailMsgError}}</span>
+      </label>
+
+
+      <label class="form-group">
+        <input [(ngModel)]="registrUser.password"  placeholder="Пароль" type="password" name="password"
+               class="form-control" formControlName="password">
+        <span *ngIf="registrationForm.controls['password'].hasError('required')" class="form-alert">Поле обязательное к заполнению</span>
+        <span *ngIf="registrationForm.controls['password'].hasError('minlength')" class="form-alert">Минимальная длина пароля 8 символов</span>
+      </label>
+
+      <label class="form-group _last-child">
+        <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="password" name="repassword"
+               class="form-control" formControlName="confirmPassword">
+        <span *ngIf="registrationForm.hasError('mismatchedPasswords')" class="form-alert">Пароли не совпадают</span>
+      </label>
+
+      <div class="display-flex">
+        <label class="g-checkbox">
+          <input type="checkbox">
+          <span class="g-checkbox__title">Я принимаю <a href="#">условия соглашения</a></span>
+        </label>
+      </div>
+      <div class="btn-wrapper">
+        <!--<button type="submit" class="btn btn_purple" [disabled]="registrationForm.invalid">Создать</button>-->
+        <button type="submit" class="btn btn_purple" [disabled]="false">Создать</button>
+        <a href="#" class="btn btn_purple btn_purple-border" (click)="showSignIn($event)">Отмена</a>
+      </div>
+    </form>
+  </div>
+</div>

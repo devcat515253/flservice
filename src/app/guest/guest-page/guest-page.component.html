@@ -10,86 +10,25 @@
 
         <div class="content">
 
-          <div *ngIf="showSigIn" [ngClass]="{animated: showSigIn, flipInX:  showSigIn && animateApply}" class="content__signin js-animateFlip">
-            <div class="sign-in-wr">
-              <app-sign-in  (onForgotPas)="showForgotPas($event)" ></app-sign-in>
-            </div>
-            <!--<div class="content__title"><h3>Войти в личный кабинет</h3></div>-->
-            <!--<div class="tip-info tip-info_success">Используйте логин <b>user</b> и пароль <b>user</b> для входа в личный-->
-              <!--кабинет.-->
-            <!--</div>-->
-            <!--<div *ngIf="loginExist" class="tip-info tip-info_error">-->
-              <!--<p [innerHtml]="userExist_db_msg"></p>-->
-              <!--<button aria-label="Close" class="close" data-dismiss="alert" type="button"></button>-->
-            <!--</div>-->
-            <!--<div class="content__form">-->
-              <!--<form>-->
-                <!--<label class="form-group">-->
-                  <!--<input [(ngModel)]="authUser.login"  placeholder="Логин" type="email" name="login" class="form-control">-->
-                  <!--<span class="form-alert">Данный логин не найден!</span>-->
-                <!--</label>-->
-
-                <!--<label class="form-group _last-child">-->
-                  <!--<input  [(ngModel)]="authUser.password" placeholder="Пароль" type="password" name="password" class="form-control">-->
-                  <!--<span class="form-alert">Данный логин не найден!</span>-->
-                <!--</label>-->
-
-                <!--<div class="display-flex">-->
-                  <!--<label class="g-checkbox">-->
-                    <!--<input type="checkbox">-->
-                    <!--<span class="g-checkbox__title">Запомнить</span>-->
-                  <!--</label>-->
-                  <!--<a href="#" class="link link_line" (click)="showForgotPas($event)">Забыли пароль ?</a>-->
-                <!--</div>-->
-                <!--<div class="btn-wrapper">-->
-                  <!--<a href="#" class="btn btn_purple" (click)="login($event)">Войти</a>-->
-                <!--</div>-->
-              <!--</form>-->
-            <!--</div>-->
+          <div *ngIf="showSigIn" [ngClass]="{animated: showSigIn, flipInX:  showSigIn && animateApply}"
+               class="content__signin js-animateFlip">
+            <app-sign-in (onForgotPas)="showForgotPas($event)"></app-sign-in>
           </div>
-          <div *ngIf="showSigOut" [ngClass]="{animated: showSigOut, flipInX:  showSigOut}" class="content__signout js-animateFlip">
-            <div class="content__title"><h3>Регистрация</h3></div>
-            <div class="tip-info tip-info_succes">Введите регистрационные данные:
-            </div>
-            <div class="content__form">
-
-              <form [formGroup]="registrationForm" >
-                <label class="form-group" [class.has-error]="login_has_error">
-                  <input [(ngModel)]="registrUser.login" (blur)="checkLogin()" placeholder="Логин" type="text" name="login" class="form-control" formControlName="login">
-                  <span *ngIf="loginMsgError" class="form-alert">{{error_msg_login}}</span>
-                </label>
-
-                <label class="form-group" [class.has-error]="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">
-                  <input  [(ngModel)]="registrUser.email"   placeholder="Эл. адрес" type="text" name="email" class="form-control" formControlName="email"  (blur)="onBlurEmail()" >
-                  <span *ngIf="emailMsgError" class="form-alert">{{emailMsgError}}</span>
-                </label>
-
-
-                <label class="form-group">
-                  <input [(ngModel)]="registrUser.password" placeholder="Пароль" type="password" name="password" class="form-control" formControlName="">
-                  <span class="form-alert">Данный логин не найден!</span>
-                </label>
-
-                <label class="form-group _last-child">
-                  <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="password" name="repassword"  class="form-control" formControlName="">
-                  <span class="form-alert">Данный логин не найден!</span>
-                </label>
-
-                <div class="display-flex">
-                  <label class="g-checkbox">
-                    <input type="checkbox">
-                    <span class="g-checkbox__title">Я принимаю <a href="#">условия соглашения</a></span>
-                  </label>
-                </div>
-                <div class="btn-wrapper">
-                  <a href="#" class="btn btn_purple" (click)="registration($event)">Регистрация</a>
-                  <a href="#" class="btn btn_purple btn_purple-border" (click)="showSignIn($event)">Отмена</a>
-                </div>
-              </form>
-            </div>
+          <div *ngIf="showSigOut" [ngClass]="{animated: showSigOut, flipInX:  showSigOut}"
+               class="content__signout js-animateFlip">
+            <app-sign-out></app-sign-out>
           </div>
 
-          <div *ngIf="showForgotPass" [ngClass]="{animated: showForgotPass, flipInX:  showForgotPass}" class="content__signpass js-animateFlip">
+
+
+
+
+
+
+
+
+          <div *ngIf="showForgotPass" [ngClass]="{animated: showForgotPass, flipInX:  showForgotPass}"
+               class="content__signpass js-animateFlip">
 
             <div class="content__title"><h3>Забыли пароль?</h3></div>
             <div class="tip-info tip-info_succes">Введите Вашу почты для восстановления пароля:
@@ -116,7 +55,8 @@
     </div>
   </div>
 
-  <div class="authorization__welcome" style="background-image:url('http://bustamanteinternational.com/wp-content/uploads/2017/09/33.jpg');">
+  <div class="authorization__welcome"
+       style="background-image:url('http://bustamanteinternational.com/wp-content/uploads/2017/09/33.jpg');">
     <div class="welcome-middle">
       <h1 class="title">Присоединяйтесь к нашей команде!</h1>
       <p>Полный учет деятельности для фриланс специалистов всех категорий!
