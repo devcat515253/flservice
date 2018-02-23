@@ -42,19 +42,16 @@ export class SignOutComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ]),
-      password: new FormControl(this.registrUser.password, {
-        validators: [
+      password: new FormControl(this.registrUser.password, [
           Validators.required,
           Validators.minLength(8)
-        ], updateOn: 'submit'}),
+        ]),
       confirmPassword: new FormControl(this.registrUser.repassword, [
         Validators.required,
         Validators.minLength(8)
       ])
-    }, {validators: matchingPasswords('password', 'confirmPassword'), updateOn: 'submit'});
+    }, {validators: matchingPasswords('password', 'confirmPassword')});
   }
-
-
 
 
   checkLogin() {
@@ -67,7 +64,7 @@ export class SignOutComponent implements OnInit {
     } else {
       this.userService.checkLogin(this.registrUser).subscribe((loginResult) => {
         this.loginExist = loginResult;
-        console.log(loginResult);
+        // console.log(loginResult);
         if (!this.loginExist) {
           this.login_has_error = true;
           this.loginMsgError = true;
