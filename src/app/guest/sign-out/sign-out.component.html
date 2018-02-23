@@ -3,7 +3,7 @@
   <p class="content__info">Введите регистрационные данные:</p>
   <div class="content__form">
 
-    <form [formGroup]="registrationForm" (submit)="registration($event)" #regForm="ngForm" novalidate>
+    <form [formGroup]="registrationForm" (submit)="registration($event)" #regForm="ngForm" >
       <label class="form-group">
         <input [(ngModel)]="registrUser.login" (blur)="checkLogin()" placeholder="Логин" type="text" name="login"
                class="form-control" formControlName="login">
@@ -17,19 +17,20 @@
       </label>
 
 
-      <label class="form-group">
-        <input [(ngModel)]="registrUser.password"  placeholder="Пароль" type="password" name="password"
-               class="form-control" formControlName="password">
-        <span *ngIf="registrationForm.controls['password'].hasError('required') && regForm.submitted" class="form-alert">Поле обязательное к заполнению</span>
-        <span *ngIf="registrationForm.controls['password'].hasError('minlength') && regForm.submitted" class="form-alert">Минимальная длина пароля 8 символов</span>
-      </label>
+              <label class="form-group">
+                <input [(ngModel)]="registrUser.password"  placeholder="Пароль" type="text" name="password"
+                       class="form-control" formControlName="password">
+                <span *ngIf="registrationForm.controls['password'].hasError('required') && regForm.submitted" class="form-alert">Поле обязательное к заполнению</span>
+                <span *ngIf="registrationForm.controls['password'].hasError('minlength') && regForm.submitted" class="form-alert">Минимальная длина пароля 8 символов</span>
+                <!--<span *ngIf="registrationForm.controls['password'].hasError('minlength')" class="form-alert">Минимальная длина пароля 8 символов</span>-->
+              </label>
 
 
-      <label class="form-group _last-child">
-        <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="password" name="repassword"
-               class="form-control" formControlName="confirmPassword">
-        <span *ngIf="registrationForm.hasError('mismatchedPasswords')" class="form-alert">Пароли не совпадают</span>
-      </label>
+        <label class="form-group _last-child">
+          <input [(ngModel)]="registrUser.repassword" placeholder="Повторите пароль" type="text" name="repassword"
+                 class="form-control" formControlName="confirmPassword">
+          <span *ngIf="registrationForm.controls['confirmPassword'].hasError('matchOther') && regForm.submitted" class="form-alert">Пароли не совпадают</span>
+        </label>
 
 
       <div class="display-flex">

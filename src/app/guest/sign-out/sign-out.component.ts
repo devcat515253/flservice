@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../_services/user.service';
 import {RegistrUser} from '../../_entity/registr-user';
-import {matchingPasswords} from '../../_validators/validators';
+import { matchOtherValidator} from '../../_validators/validators';
 
 @Component({
   selector: 'app-sign-out',
@@ -11,7 +11,7 @@ import {matchingPasswords} from '../../_validators/validators';
 })
 export class SignOutComponent implements OnInit {
 
-  @Output() showSignIn = new EventEmitter<any>();
+  // @Output() showSignIn = new EventEmitter<any>();
 
   // Подсветка ошибки логниа
   error_msg_login: string = '';
@@ -33,6 +33,8 @@ export class SignOutComponent implements OnInit {
 
   initValidator() {
     this.registrationForm = new FormGroup({
+
+
       email: new FormControl( this.registrUser.email, [
         Validators.required,
         Validators.email,
@@ -43,15 +45,18 @@ export class SignOutComponent implements OnInit {
         Validators.minLength(3)
       ]),
       password: new FormControl(this.registrUser.password, [
-          Validators.required,
-          Validators.minLength(8)
-        ]),
-      confirmPassword: new FormControl(this.registrUser.repassword, [
         Validators.required,
         Validators.minLength(8)
+      ]),
+      confirmPassword: new FormControl(this.registrUser.repassword, [
+        Validators.required,
+        Validators.minLength(8),
+        matchOtherValidator('password')
       ])
-    }, {validators: matchingPasswords('password', 'confirmPassword')});
+    });
   }
+
+
 
 
   checkLogin() {
@@ -126,7 +131,7 @@ export class SignOutComponent implements OnInit {
 
   showSignIn(event) {
     event.preventDefault();
-    this.showSignIn.emit();
+   // this.showSignIn.emit();
   }
 
 }
