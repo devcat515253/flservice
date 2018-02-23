@@ -16,15 +16,8 @@
           </div>
           <div *ngIf="showSigOut" [ngClass]="{animated: showSigOut, flipInX:  showSigOut}"
                class="content__signout js-animateFlip">
-            <app-sign-out></app-sign-out>
+            <app-sign-out (onShowSignIn)="showSignIn()"></app-sign-out>
           </div>
-
-
-
-
-
-
-
 
 
           <div *ngIf="showForgotPass" [ngClass]="{animated: showForgotPass, flipInX:  showForgotPass}"

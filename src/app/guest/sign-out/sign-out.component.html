@@ -1,6 +1,8 @@
 <div class="sign-out">
   <div class="content__title"><h3>Регистрация</h3></div>
   <p class="content__info">Введите регистрационные данные:</p>
+  <div *ngIf="registrSuccess"  class="tip-info tip-info_success">Успешная регистрация!</div>
+  <div *ngIf="registrFail"  class="tip-info tip-info_error">Ошибка при регистрации! <br> Попробуйте еще раз.</div>
   <div class="content__form">
 
     <form [formGroup]="registrationForm" (submit)="registration($event)" #regForm="ngForm" >
@@ -9,6 +11,8 @@
                class="form-control" formControlName="login">
         <span *ngIf="loginMsgError" class="form-alert">{{error_msg_login}}</span>
       </label>
+
+
 
       <label class="form-group">
         <input [(ngModel)]="registrUser.email" placeholder="Эл. адрес" type="text" name="email" class="form-control"
@@ -22,7 +26,6 @@
                        class="form-control" formControlName="password">
                 <span *ngIf="registrationForm.controls['password'].hasError('required') && regForm.submitted" class="form-alert">Поле обязательное к заполнению</span>
                 <span *ngIf="registrationForm.controls['password'].hasError('minlength') && regForm.submitted" class="form-alert">Минимальная длина пароля 8 символов</span>
-                <!--<span *ngIf="registrationForm.controls['password'].hasError('minlength')" class="form-alert">Минимальная длина пароля 8 символов</span>-->
               </label>
 
 

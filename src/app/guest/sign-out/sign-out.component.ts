@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../_services/user.service';
 import {RegistrUser} from '../../_entity/registr-user';
 import { matchOtherValidator} from '../../_validators/validators';
+import 'rxjs/add/operator/mergeMap';
+import {of} from 'rxjs/observable/of';
 
 @Component({
   selector: 'app-sign-out',
@@ -11,7 +13,7 @@ import { matchOtherValidator} from '../../_validators/validators';
 })
 export class SignOutComponent implements OnInit {
 
-  // @Output() showSignIn = new EventEmitter<any>();
+  @Output() onShowSignIn = new EventEmitter<any>();
 
   // Подсветка ошибки логниа
   error_msg_login: string = '';
@@ -22,6 +24,9 @@ export class SignOutComponent implements OnInit {
   loginMsgError: boolean = false;
   loginExist: boolean = false;
   registrationForm: FormGroup;
+
+  registrSuccess: boolean = false;
+  registrFail: boolean = false;
 
 
   constructor(private userService: UserService) {
@@ -71,7 +76,6 @@ export class SignOutComponent implements OnInit {
         this.loginExist = loginResult;
         // console.log(loginResult);
         if (!this.loginExist) {
-          this.login_has_error = true;
           this.loginMsgError = true;
           this.error_msg_login = 'Указанный логин занят!';
           this.registrationForm.controls['login'].setErrors({'incorrect': true});
@@ -108,7 +112,6 @@ export class SignOutComponent implements OnInit {
 
     const controls = this.registrationForm.controls;
 
-    this.checkLogin();
     this.checkEmail();
 
     if (this.registrationForm.invalid) {
@@ -118,20 +121,36 @@ export class SignOutComponent implements OnInit {
 
     }
 
-    console.log(this.registrationForm.value);
+    this.userService.checkLogin(this.registrUser).flatMap(loginResult => {
+      if  (!loginResult) {
+        this.loginMsgError = true;
+        this.error_msg_login = 'Указанный логин занят!';
+        this.registrationForm.controls['login'].setErrors({'incorrect': true});
+        return of();
+      }
 
+      return this.userService.registration(this.registrUser);
+    }).subscribe(data => {
 
+      console.log(data);
 
-    // this.userService.registration(this.registrUser).subscribe((user) => {
-    //   console.log(user);
-    // });
+      if (data.status === 'okay') {
+        this.registrSuccess = true;
+        console.log(this.registrSuccess);
+        this.registrationForm.reset();
+      } else {
+        this.registrFail = true;
+      }
+
+    });
   }
 
 
 
   showSignIn(event) {
     event.preventDefault();
-   // this.showSignIn.emit();
+
+   this.onShowSignIn.emit();
   }
 
 }
